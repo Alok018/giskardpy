@@ -38,18 +38,17 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # download/build the ROS source
-RUN mkdir ros_catkin_ws && \
-    cd ros_catkin_ws && \
-    rosinstall_generator ${ROS_PKG} vision_msgs --rosdistro ${ROS_DISTRO} --deps --tar > ${ROS_DISTRO}-${ROS_PKG}.rosinstall && \
-    mkdir src && \
-    cd src && \
+RUN mkdir mkdir -p ~/giskardpy_ws/src && \
+    cd ~/giskardpy_ws
+    catkin init
+    cd src
+    wstool init
+    wstool merge https://raw.githubusercontent.com/SemRoCo/giskardpy/master/rosinstall/catkin.rosinstall
     git clone https://github.com/Alok018/giskardpy.git && \
-    cd .. && \
-    vcs import --input ${ROS_DISTRO}-${ROS_PKG}.rosinstall ./src && \
-    apt-get update && \
-    rosdep install --from-paths ./src --ignore-packages-from-source --rosdistro ${ROS_DISTRO} -y && \
-    python3 ./src/catkin/bin/catkin_make_isolated --install --install-space ${ROS_ROOT} -DCMAKE_BUILD_TYPE=Release && \
-    rm -rf /var/lib/apt/lists/*
-
+    wstool update
+    rosdep install --ignore-src --from-paths .
+    cd .. 
+    catkin build 
+    
 RUN echo 'source ${ROS_ROOT}/setup.bash' >> /root/.bashrc
 WORKDIR /
