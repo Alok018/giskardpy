@@ -52,7 +52,7 @@ RUN mkdir ros_catkin_ws && \
     rosinstall_generator ${ROS_PKG} vision_msgs --rosdistro ${ROS_DISTRO} --deps --tar > ${ROS_DISTRO}-${ROS_PKG}.rosinstall && \
     mkdir src && \
     cd src && \
-    git clone https://github.com/Alok018/iai_ringlight.git && \
+    git clone https://github.com/Alok018/giskardpy.git && \
     wstool init && \                              # init rosinstall
     wstool merge https://raw.githubusercontent.com/SemRoCo/giskardpy/master/rosinstall/catkin.rosinstal && \
     wstool update && \                              # pull source repositories
