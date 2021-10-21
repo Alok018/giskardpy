@@ -40,7 +40,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # download/build the ROS source
-RUN mkdir mkdir -p ~/giskardpy_ws/src && \
+RUN mkdir -p ~/giskardpy_ws/src && \
     cd ~/giskardpy_ws && \
     catkin init && \
     cd src && \
