@@ -34,17 +34,17 @@ RUN apt-get update && \
           python3-rosinstall-generator \
 	  python3-wstool \
           python3-vcstool \
-	  python3-pybullet \
-	  python3-scipy \
-	  python3-sortedcontainers \
-	  python3-casadi \
-	  python3-hypothesis \
-	  python3-pandas \
-	  python3-numpy \
           build-essential && \
     rosdep init && \
     rosdep update && \
     rm -rf /var/lib/apt/lists/*
+RUN pip install pybullet==3.0.8 
+RUN pip install scipy==1.2.2 
+RUN pip install casadi 
+RUN pip install sortedcontainers 
+RUN pip install hypothesis==4.34.0 
+RUN pip install pandas==0.24.2 
+RUN pip install numpy==1.16 
 
 # download/build the ROS source
 RUN mkdir ros_catkin_ws && \
