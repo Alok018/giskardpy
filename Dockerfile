@@ -41,12 +41,13 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
     
 RUN pip install pybullet==3.0.8 && \
-    pip install scipy==1.2.2 && \
-    pip install casadi && \
-    pip install sortedcontainers && \ 
-    pip install hypothesis==4.34.0 && \
-    pip install pandas==0.24.2 && \
-    pip install numpy==1.16 
+    pip install scipy==1.2.2 \
+    pip install casadi \
+    pip install sortedcontainers \ 
+    pip install hypothesis==4.34.0 \
+    pip install pandas==0.24.2 \
+    pip install numpy==1.16 && \
+  rm -rf /var/lib/apt/lists/*
   
 # download/build the ROS source
 RUN mkdir ros_catkin_ws && \
