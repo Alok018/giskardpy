@@ -34,13 +34,13 @@ RUN apt-get update && \
           python3-rosinstall-generator \
 	  python3-wstool \
           python3-vcstool \
-	  pybullet \
-	  scipy \
-	  sortedcontainers \
-	  casadi \
-	  hypothesis \
-	  pandas \
-	  numpy \
+	  python3-pybullet \
+	  python3-scipy \
+	  python3-sortedcontainers \
+	  python3-casadi \
+	  python3-hypothesis \
+	  python3-pandas \
+	  python3-numpy \
           build-essential && \
     rosdep init && \
     rosdep update && \
