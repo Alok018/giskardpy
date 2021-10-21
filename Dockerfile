@@ -34,23 +34,33 @@ RUN apt-get update && \
           python3-rosinstall-generator \
 	  python3-wstool \
           python3-vcstool \
+	  pybullet==3.0.8 \
+	  scipy==1.2 \
+	  sortedcontainers \
+	  casadi \
+	  hypothesis==4.34.0 \
+	  pandas==0.24.2 \
+	  numpy==1.16 \
           build-essential && \
     rosdep init && \
     rosdep update && \
     rm -rf /var/lib/apt/lists/*
 
 # download/build the ROS source
-RUN mkdir -p ~/giskardpy_ws/src && \
-    cd ~/giskardpy_ws && \
-    catkin init && \
+RUN mkdir ros_catkin_ws && \
+    cd ros_catkin_ws && \
+    rosinstall_generator ${ROS_PKG} vision_msgs --rosdistro ${ROS_DISTRO} --deps --tar > ${ROS_DISTRO}-${ROS_PKG}.rosinstall && \
+    mkdir src && \
     cd src && \
-    wstool init && \
-    wstool merge https://raw.githubusercontent.com/SemRoCo/giskardpy/master/rosinstall/catkin.rosinstall && \
-    git clone https://github.com/Alok018/giskardpy.git && \
-    wstool update && \
-    rosdep install --ignore-src --from-paths . && \
+    git clone https://github.com/Alok018/iai_ringlight.git && \
+    wstool init                                 # init rosinstall
+    wstool merge https://raw.githubusercontent.com/SemRoCo/giskardpy/master/rosinstall/catkin.rosinstal
+    wstool update                               # pull source repositories
     cd .. && \
-    catkin build && \
+    vcs import --input ${ROS_DISTRO}-${ROS_PKG}.rosinstall ./src && \
+    apt-get update && \
+    rosdep install --from-paths ./src --ignore-packages-from-source --rosdistro ${ROS_DISTRO} -y && \
+    python3 ./src/catkin/bin/catkin_make_isolated --install --install-space ${ROS_ROOT} -DCMAKE_BUILD_TYPE=Release && \
     rm -rf /var/lib/apt/lists/*
     
 RUN echo 'source ${ROS_ROOT}/setup.bash' >> /root/.bashrc
