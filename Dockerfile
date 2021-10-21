@@ -39,16 +39,17 @@ RUN apt-get update && \
 
 # download/build the ROS source
 RUN mkdir mkdir -p ~/giskardpy_ws/src && \
-    cd ~/giskardpy_ws
-    catkin init
-    cd src
-    wstool init
-    wstool merge https://raw.githubusercontent.com/SemRoCo/giskardpy/master/rosinstall/catkin.rosinstall
+    cd ~/giskardpy_ws && \
+    catkin init && \
+    cd src && \
+    wstool init && \
+    wstool merge https://raw.githubusercontent.com/SemRoCo/giskardpy/master/rosinstall/catkin.rosinstall && \
     git clone https://github.com/Alok018/giskardpy.git && \
-    wstool update
-    rosdep install --ignore-src --from-paths .
-    cd .. 
-    catkin build 
+    wstool update && \
+    rosdep install --ignore-src --from-paths . && \
+    cd .. && \
+    catkin build && \
+    rm -rf /var/lib/apt/lists/*
     
 RUN echo 'source ${ROS_ROOT}/setup.bash' >> /root/.bashrc
 WORKDIR /
