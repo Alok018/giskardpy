@@ -1,8 +1,8 @@
-ARG BASE_IMAGE=ubuntu:18.04
+ARG BASE_IMAGE=ubuntu:focal
 FROM ${BASE_IMAGE}
 
 ARG ROS_PKG=ros_base
-ENV ROS_DISTRO=melodic
+ENV ROS_DISTRO=noetic
 ENV ROS_ROOT=/opt/ros/${ROS_DISTRO}
 ENV ROS_PYTHON_VERSION=3
 
@@ -23,7 +23,7 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/*
 
 RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-RUN curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add -
+RUN curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
 
 # install bootstrap dependencies
 RUN apt-get update && \
@@ -41,11 +41,11 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
     
 RUN pip install pybullet==3.0.8 && \
-    pip install scipy==1.2.2 && \
-    pip install casadi && \
-    pip install sortedcontainers && \ 
-    pip install hypothesis==4.34.0 && \
-    pip install pandas==0.24.2 && \
+    pip install scipy==1.2.2 \
+    pip install casadi \
+    pip install sortedcontainers \ 
+    pip install hypothesis==4.34.0 \
+    pip install pandas==0.24.2 \
     pip install numpy==1.16 && \
     rm -rf /var/lib/apt/lists/*
   
