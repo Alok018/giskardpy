@@ -30,7 +30,9 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
           libpython3-dev \
           python3-rosdep \
+	  python3-rosinstall \
           python3-rosinstall-generator \
+	  python3-wstool \
           python3-vcstool \
           build-essential && \
     rosdep init && \
