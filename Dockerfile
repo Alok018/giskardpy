@@ -1,8 +1,8 @@
-ARG BASE_IMAGE=ubuntu:18.04
+ARG BASE_IMAGE=ubuntu:focal
 FROM ${BASE_IMAGE}
 
 ARG ROS_PKG=ros_base
-ENV ROS_DISTRO=melodic
+ENV ROS_DISTRO=noetic
 ENV ROS_ROOT=/opt/ros/${ROS_DISTRO}
 ENV ROS_PYTHON_VERSION=3
 
@@ -41,13 +41,13 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
     
 RUN pip install pybullet==3.0.8 && \
-    pip install scipy==1.2.2 \
-    pip install casadi \
-    pip install sortedcontainers \ 
-    pip install hypothesis==4.34.0 \
-    pip install pandas==0.24.2 \
+    pip install scipy==1.2.2 && \
+    pip install casadi && \
+    pip install sortedcontainers && \ 
+    pip install hypothesis==4.34.0 && \
+    pip install pandas==0.24.2 && \
     pip install numpy==1.16 && \
-  rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/*
   
 # download/build the ROS source
 RUN mkdir ros_catkin_ws && \
@@ -56,9 +56,6 @@ RUN mkdir ros_catkin_ws && \
     mkdir src && \
     cd src && \
     git clone https://github.com/Alok018/giskardpy.git && \
-    #wstool init && \                              # init rosinstall
-    #wstool merge https://raw.githubusercontent.com/SemRoCo/giskardpy/master/rosinstall/catkin.rosinstal && \
-    #wstool update && \                              # pull source repositories
     cd .. && \
     vcs import --input ${ROS_DISTRO}-${ROS_PKG}.rosinstall ./src && \
     apt-get update && \
