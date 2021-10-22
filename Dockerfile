@@ -41,11 +41,11 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
     
 RUN pip3 install pybullet==3.0.8 && \
-    pip3 install scipy==1.2.2 \
-    pip3 install casadi \
-    pip3 install sortedcontainers \ 
-    pip3 install hypothesis==4.34.0 \
-    pip3 install pandas==0.24.2 \
+    pip3 install scipy==1.2.2 && \
+    pip3 install casadi && \
+    pip3 install sortedcontainers && \ 
+    pip3 install hypothesis==4.34.0 && \
+    pip3 install pandas==0.24.2 && \
     pip3 install numpy==1.16 && \
     rm -rf /var/lib/apt/lists/*
   
