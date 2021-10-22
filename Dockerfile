@@ -40,7 +40,8 @@ RUN apt-get update && \
     rosdep update && \
     rm -rf /var/lib/apt/lists/*
     
-RUN pip3 install pybullet==3.0.8 && \
+RUN apt update && \
+    pip3 install pybullet==3.0.8 && \
     pip3 install scipy==1.2.2 && \
     pip3 install casadi && \
     pip3 install sortedcontainers && \ 
