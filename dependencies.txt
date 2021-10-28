@@ -1,12 +1,12 @@
 # use the requirements.txt syntax to add dependencies
 casadi>=3.1.5
-numpy==1.16.6
+numpy>=1.17.3
 scipy==1.7.1
 #urdfdom-py>=0.3.3
 #rosunit>=1.14.4
 cython>=0.29.14
 #qpoases>=3.1.0
-#giskard_msgs>=0.1.0
+giskard_msgs>=0.1.0
 #py_trees_ros>=0.5.14
 #py_trees>=0.5.12
 pybullet==3.0.6
