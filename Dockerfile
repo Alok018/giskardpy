@@ -40,7 +40,7 @@ RUN apt-get update && \
     rosdep update && \
     rm -rf /var/lib/apt/lists/*
     
-RUN pip install -r requirements.txt
+RUN pip3 install -r dependencies.txt
   
 # download/build the ROS source
 RUN mkdir ros_catkin_ws && \
