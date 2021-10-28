@@ -31,6 +31,13 @@ RUN apt-get update && \
           libpython3-dev \
           python3-rosdep \
 	  python3-pip \
+	  python3-pybullet==3.0.8 \
+	  python3-scipy==1.2.2
+	  python3-casadi \
+	  python3-sortedcontainers \
+	  python3-hypothesis==4.34.0 \
+	  python3-pandas==0.24.2 \ 
+	  python3-numpy==1.16 \
 	  python3-rosinstall \
           python3-rosinstall-generator \
 	  python3-wstool \
@@ -38,16 +45,6 @@ RUN apt-get update && \
           build-essential && \
     rosdep init && \
     rosdep update && \
-    rm -rf /var/lib/apt/lists/*
-RUN git clean -xdf.git
-RUN apt update && \
-    pip3 install pybullet==3.0.8 && \
-    pip3 install scipy==1.2.2 && \
-    pip3 install casadi && \
-    pip3 install sortedcontainers && \ 
-    pip3 install hypothesis==4.34.0 && \
-    pip3 install pandas==0.24.2 && \
-    pip3 install numpy==1.16 && \
     rm -rf /var/lib/apt/lists/*
   
 # download/build the ROS source
