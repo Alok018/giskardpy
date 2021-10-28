@@ -6,10 +6,7 @@ node {
 
         checkout scm
     }
-    stage('install dependencies') {
-            sh 'python -m pip install -r dependencies.txt'
- 
-    }
+    
     stage('Build image') {
         /* This builds the actual image */
 
