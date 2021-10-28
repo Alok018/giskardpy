@@ -31,13 +31,6 @@ RUN apt-get update && \
           libpython3-dev \
           python3-rosdep \
 	  python3-pip \
-	  python-pybullet \
-	  python-scipy \
-	  python-numpy \
-	  python-casadi \
-	  python-sortedcontainers \
-	  python-hypothesis \
-	  python-pandas \
 	  python3-rosinstall \
           python3-rosinstall-generator \
 	  python3-wstool \
