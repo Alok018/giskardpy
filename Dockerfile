@@ -31,13 +31,6 @@ RUN apt-get update && \
           libpython3-dev \
           python3-rosdep \
 	  python3-pip \
-	  python3-pybullet==3.0.8 \
-	  python3-scipy==1.2.2 \
-	  python3-casadi \
-	  python3-sortedcontainers \
-	  python3-hypothesis==4.34.0 \
-	  python3-pandas==0.24.2 \ 
-	  python3-numpy==1.16 \
 	  python3-rosinstall \
           python3-rosinstall-generator \
 	  python3-wstool \
@@ -46,6 +39,8 @@ RUN apt-get update && \
     rosdep init && \
     rosdep update && \
     rm -rf /var/lib/apt/lists/*
+    
+RUN ip install -r dependencies.txt
   
 # download/build the ROS source
 RUN mkdir ros_catkin_ws && \
