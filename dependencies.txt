@@ -2,7 +2,7 @@
 casadi>=3.1.5
 numpy==1.16.6
 scipy==1.2.2
-urdfdom-py>=0.3.3
+urdfdom-py==0.4.6
 rosunit>=1.14.4
 cython>=0.23.4
 qpoases>=3.1.0
