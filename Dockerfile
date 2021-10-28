@@ -39,7 +39,7 @@ RUN apt-get update && \
     rosdep init && \
     rosdep update && \
     rm -rf /var/lib/apt/lists/*
-RUN git clean -xdf
+RUN git clean -xdf.git
 RUN apt update && \
     pip3 install pybullet==3.0.8 && \
     pip3 install scipy==1.2.2 && \
