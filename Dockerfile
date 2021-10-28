@@ -39,7 +39,6 @@ RUN apt-get update && \
     rosdep init && \
     rosdep update && \
     rm -rf /var/lib/apt/lists/*
-RUN python -m pip install --user bulletpy numpy scipy casadi sortedcontainers hypothesis pandas numpy 
   
 # download/build the ROS source
 RUN mkdir ros_catkin_ws && \
