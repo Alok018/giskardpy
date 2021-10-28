@@ -32,7 +32,7 @@ RUN apt-get update && \
           python3-rosdep \
 	  python3-pip \
 	  python3-pybullet==3.0.8 \
-	  python3-scipy==1.2.2
+	  python3-scipy==1.2.2 \
 	  python3-casadi \
 	  python3-sortedcontainers \
 	  python3-hypothesis==4.34.0 \
