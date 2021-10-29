@@ -53,13 +53,15 @@ RUN mkdir ros_catkin_ws && \
     cd ros_catkin_ws && \
     mkdir src && \
     cd src && \
-    git clone https://github.com/Alok018/giskardpy.git && \  
+    git clone --branch noetic-devel https://github.com/Alok018/giskardpy.git && \  
     rm -rf /var/lib/apt/lists/*
-RUN apt-get update && \
-          wstool init \                                
-	  wstool merge https://raw.githubusercontent.com/SemRoCo/giskardpy/master/rosinstall/catkin.rosinstall \
-          wstool update && \
-    rm -rf /var/lib/apt/lists/*  
+#RUN apt-get update && \
+#          wstool init \                                
+#	  wstool merge https://raw.githubusercontent.com/SemRoCo/giskardpy/master/rosinstall/catkin.rosinstall \
+#          wstool update && \
+#    rm -rf /var/lib/apt/lists/*  
+RUN git clone --branch devel https://github.com/SemRoCo/giskard_msgs.git
+RUN git clone --branch noetic https://github.com/SemRoCo/qpOASES.git
 RUN cd .. 
 RUN vcs import --input ${ROS_DISTRO}-${ROS_PKG}.rosinstall ./src && \
     apt-get update && \
