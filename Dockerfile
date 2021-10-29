@@ -42,6 +42,8 @@ RUN apt-get update && \
     rosdep init && \
     rosdep update && \
     rm -rf /var/lib/apt/lists/*
+    
+  
 
 COPY dependencies.txt dependencies.txt
 RUN pip install -r dependencies.txt  
@@ -51,12 +53,15 @@ RUN mkdir ros_catkin_ws && \
     cd ros_catkin_ws && \
     mkdir src && \
     cd src && \
-    git clone https://github.com/Alok018/giskardpy.git && \
-    wstool init && \                                
-    wstool merge https://github.com/SemRoCo/giskardpy/blob/master/rosinstall/catkin.rosinstall && \
-    wstool update && \ 
-    cd .. && \
-    vcs import --input ${ROS_DISTRO}-${ROS_PKG}.rosinstall ./src && \
+    git clone https://github.com/Alok018/giskardpy.git && \  
+    rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+          wstool init \                                
+	  wstool merge https://raw.githubusercontent.com/SemRoCo/giskardpy/master/rosinstall/catkin.rosinstall \
+          wstool update && \
+    rm -rf /var/lib/apt/lists/*  
+RUN cd .. 
+RUN vcs import --input ${ROS_DISTRO}-${ROS_PKG}.rosinstall ./src && \
     apt-get update && \
     rosdep install --from-paths ./src --ignore-packages-from-source --rosdistro ${ROS_DISTRO} -y && \
     python3 ./src/catkin/bin/catkin_make_isolated --install --install-space ${ROS_ROOT} -DCMAKE_BUILD_TYPE=Release && \
