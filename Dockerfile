@@ -35,17 +35,21 @@ RUN apt-get update && \
           python3-rosinstall-generator \
 	  python3-wstool \
           python3-vcstool \
+	  ros-noetic-urdfdom-py \
+	  ros-noetic-py-trees \
+	  ros-noetic-py-trees-ros \
           build-essential && \
     rosdep init && \
     rosdep update && \
     rm -rf /var/lib/apt/lists/*
-COPY dependencies.txt dependencies.txt
 
+COPY dependencies.txt dependencies.txt
 RUN pip install -r dependencies.txt  
+
 # download/build the ROS source
 RUN mkdir ros_catkin_ws && \
     cd ros_catkin_ws && \
-    rosinstall_generator ${ROS_PKG} giscard_msgs --rosdistro ${ROS_DISTRO} --deps --tar > ${ROS_DISTRO}-${ROS_PKG}.rosinstall && \
+    rosinstall_generator ${ROS_PKG} rosinstall --rosdistro ${ROS_DISTRO} --deps --tar > ${ROS_DISTRO}-${ROS_PKG}.rosinstall && \
     mkdir src && \
     cd src && \
     git clone https://github.com/Alok018/giskardpy.git && \
