@@ -53,7 +53,7 @@ RUN mkdir ros_catkin_ws && \
     cd src && \
     git clone https://github.com/Alok018/giskardpy.git && \
     wstool init && \                                
-    wstool merge https://raw.githubusercontent.com/SemRoCo/giskardpy/master/rosinstall/catkin.rosinstall && \
+    wstool merge https://github.com/SemRoCo/giskardpy/blob/master/rosinstall/catkin.rosinstall && \
     wstool update && \ 
     cd .. && \
     vcs import --input ${ROS_DISTRO}-${ROS_PKG}.rosinstall ./src && \
