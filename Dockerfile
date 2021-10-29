@@ -49,10 +49,12 @@ RUN pip install -r dependencies.txt
 # download/build the ROS source
 RUN mkdir ros_catkin_ws && \
     cd ros_catkin_ws && \
-    rosinstall_generator ${ROS_PKG} rosinstall --rosdistro ${ROS_DISTRO} --deps --tar > ${ROS_DISTRO}-${ROS_PKG}.rosinstall && \
     mkdir src && \
     cd src && \
     git clone https://github.com/Alok018/giskardpy.git && \
+    wstool init && \                                
+    wstool merge https://raw.githubusercontent.com/SemRoCo/giskardpy/master/rosinstall/catkin.rosinstall && \
+    wstool update && \ 
     cd .. && \
     vcs import --input ${ROS_DISTRO}-${ROS_PKG}.rosinstall ./src && \
     apt-get update && \
