@@ -81,6 +81,7 @@ RUN pip install -r dependencies.txt
 
 RUN mkdir ros_catkin_ws && \
     cd ros_catkin_ws && \
+    rosinstall_generator ${ROS_PKG} vision_msgs --rosdistro ${ROS_DISTRO} --deps --tar > ${ROS_DISTRO}-${ROS_PKG}.rosinstall && \
     mkdir src && \
     cd src && \
     git clone --branch devel https://github.com/SemRoCo/giskard_msgs.git && \
