@@ -53,11 +53,11 @@ RUN pip install -r dependencies.txt
 ###################
 # download/build the ROS source
 #RUN mkdir ros_catkin_ws && \
-    cd ros_catkin_ws && \
-    mkdir src && \
-    cd src && \
-    git clone --branch noetic-devel https://github.com/Alok018/giskardpy.git && \
-    rm -rf /var/lib/apt/lists/*
+#    cd ros_catkin_ws && \
+#    mkdir src && \
+#   cd src && \
+#    git clone --branch noetic-devel https://github.com/Alok018/giskardpy.git && \
+#    rm -rf /var/lib/apt/lists/*
 #RUN apt-get update && \
 #          wstool init \                                
 #	  wstool merge https://raw.githubusercontent.com/SemRoCo/giskardpy/master/rosinstall/catkin.rosinstall \
