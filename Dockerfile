@@ -89,6 +89,7 @@ RUN mkdir ros_catkin_ws && \
     git clone --branch noetic-devel https://github.com/Alok018/giskardpy.git && \
     cd .. && \
     apt-get update && \
+    vcs import --input ${ROS_DISTRO}-${ROS_PKG}.rosinstall ./src && \
     rosdep install --from-paths ./src --ignore-packages-from-source --rosdistro ${ROS_DISTRO} --skip-keys python3-pykdl -y && \
     python3 ./src/catkin/bin/catkin_make_isolated --install --install-space ${ROS_ROOT} -DCMAKE_BUILD_TYPE=Release && \
     rm -rf /var/lib/apt/lists/*
