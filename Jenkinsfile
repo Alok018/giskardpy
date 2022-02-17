@@ -11,11 +11,9 @@ node {
 
         app = docker.build("noetic")
     }
-    stage('Test image') {
-        
-       app.inside {
-           echo "Tests passed"
-           sh 'python test/kdl_parser.py'
+    stage('Test image') {     
+        steps {
+            sh 'python setup.py'
         }
     }
      stage ('Email Notification'){
