@@ -15,6 +15,7 @@ node {
         
        app.inside {
            echo "Tests passed"
+           sh 'python test/kdl_parser.py'
         }
     }
      stage ('Email Notification'){
