@@ -41,6 +41,7 @@ RUN apt-get update && \
             ros-noetic-urdfdom-py \
             ros-noetic-py-trees \
             ros-noetic-py-trees-ros \
+            ros-noetic-py-trees-msgs \
             ros-noetic-catkin \
             build-essential && \
     rosdep init && \
@@ -60,6 +61,10 @@ RUN mkdir ros_catkin_ws && \
     git clone --branch devel https://github.com/SemRoCo/giskard_msgs.git && \
     git clone --branch noetic https://github.com/SemRoCo/qpOASES.git && \
     git clone https://github.com/code-iai/omni_pose_follower.git && \
+    git clone --branch release/0.7.x https://github.com/splintered-reality/py_trees.git && \
+    git clone https://github.com/code-iai/iai_common_msgs.git && \
+    git clone --branch 18.04 https://github.com/code-iai/iai_naive_kinematics_sim.git && \
+    git clone --branch release/0.6.x https://github.com/splintered-reality/py_trees_ros.git && \
     cd .. && \
     vcs import --input ${ROS_DISTRO}-${ROS_PKG}.rosinstall ./src && \
     apt-get update && \
