@@ -17,7 +17,7 @@ node {
         }
     }
      stage ('Email Notification'){
-         mail bcc: '', body: 'Thanks', cc: '', from: '', replyTo: '', subject: 'Jenkinsjob Successful', to: 'iaiciserver@gmail.com'
+         mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: 'Jenkins job successful', to: 'iaiciserver@gmail.com'
      }
 }
    
