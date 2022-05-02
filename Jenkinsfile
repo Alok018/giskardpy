@@ -17,7 +17,7 @@ node {
         }
     }
      stage ('Email Notification'){
-         mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: 'Jenkins job successful', to: 'iaiciserver@gmail.com'
+         mail bcc: '', body: 'Giskardpy has successfully built.', cc: '', from: '', replyTo: '', subject: 'Giskardpy building', to: 'iaiciserver@gmail.com'
      }
 }
    
