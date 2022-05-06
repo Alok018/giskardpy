@@ -41,6 +41,7 @@ RUN apt-get update && \
             ros-noetic-urdfdom-py \
             ros-noetic-py-trees \
             ros-noetic-py-trees-ros \
+            ros-noetic-py-trees-msgs \
             ros-noetic-catkin \
             build-essential && \
     rosdep init && \
