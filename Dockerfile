@@ -58,9 +58,16 @@ RUN mkdir ros_catkin_ws && \
     mkdir src && \
     cd src && \
     git clone --branch noetic-devel https://github.com/Alok018/giskardpy.git && \
-    git clone --branch devel https://github.com/SemRoCo/giskard_msgs.git && \
+    git clone https://github.com/SemRoCo/giskard_msgs.git && \
     git clone --branch noetic https://github.com/SemRoCo/qpOASES.git && \
     git clone https://github.com/code-iai/omni_pose_follower.git && \
+    git clone https://github.com/code-iai/iai_naive_kinematics_sim.git && \
+    git clone https://github.com/code-iai/iai_common_msgs.git && \
+    git clone --branch release/0.7.x https://github.com/splintered-reality/py_trees.git && \
+    git clone --branch release/0.6.x https://github.com/splintered-reality/py_trees_ros.git && \
+    git clone https://github.com/ros-geographic-info/unique_identifier.git && \
+    git clone https://github.com/splintered-reality/py_trees_msgs.git && \
+    git clone https://github.com/ros-planning/navigation_msgs.git && \
     cd .. && \
     vcs import --input ${ROS_DISTRO}-${ROS_PKG}.rosinstall ./src && \
     apt-get update && \
